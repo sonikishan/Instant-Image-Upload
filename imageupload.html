@@ -11,7 +11,7 @@
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function (e) {
-				$('#img_prev').attr('src', e.target.result).height(140).width(105);
+				$('#img_prev').attr('src', e.target.result).height(100).width(100);
 			};
 			reader.readAsDataURL(input.files[0]);
 		}
@@ -56,13 +56,11 @@
 		<div style="height: 150px; width: 200px;" class="fileupload-new thumbnail">
 			<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image">
 		</div>
-		<div style="max-width: 100px; max-height: 100px; line-height: 105px; margin: 10px 0 0 10px;" class="fileupload-preview fileupload-exists thumbnail">
-			<img style="height:140px; width:105px;" id="img_prev" src="#" alt="" />
+		<div style="max-width: 100px; max-height: 100px; margin: 10px 0 0 10px;" class="fileupload-preview fileupload-exists thumbnail">
+			<img style="height:100px; width:100px;" id="img_prev" src="#" alt="" />
 		</div>
 		<div>
 			<span class="btn btn-file">
-				<span class="fileupload-new">Select image</span>
-				<span class="fileupload-exists">Change</span>
 				<input id= "imgupload" type="file" onchange="readURL(this);">
 			</span>
 		</div>
