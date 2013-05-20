@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title>Image preview</title>
+    <link  href="css/bootstrap.css" type="text/css" rel="stylesheet" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script>
+	var blank="http://upload.wikimedia.org/wikipedia/commons/c/c0/Blank.gif";
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('#img_prev').attr('src', e.target.result).height(140).width(105);
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+		else {
+			var img = input.value;
+			$('#img_prev').attr('src',img).height(200);
+		}
+		$("#x").show().css("margin-right","10px");
+	}
+	$(document).ready(function() {
+		/*$('#imgupload').change(function(){
+			var fileName = $(this).val();
+			if(fileName) {
+				$('.btn').css('background-image','url(imges/delete.png)');
+				$(this).click(function(){
+					$(this).reset();
+				})
+			}
+		}); */
+		$("#x").click(function() {
+			$("#img_prev").attr("src",blank);
+			$("#x").hide();
+		});
+	});
+	</script>
+    
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<style>
+
+#x { display:none; position:relative; z-index:200; float:right}
+#previewPane { display: inline-block; }]
+
+</style>
+</head>
+
+<body>
+	<div data-provides="fileupload" class="fileupload fileupload-exists">
+		<input type="hidden">
+		<div style="height: 150px; width: 200px;" class="fileupload-new thumbnail">
+			<img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image">
+		</div>
+		<div style="max-width: 100px; max-height: 100px; line-height: 105px; margin: 10px 0 0 10px;" class="fileupload-preview fileupload-exists thumbnail">
+			<img style="height:140px; width:105px;" id="img_prev" src="#" alt="" />
+		</div>
+		<div>
+			<span class="btn btn-file">
+				<span class="fileupload-new">Select image</span>
+				<span class="fileupload-exists">Change</span>
+				<input id= "imgupload" type="file" onchange="readURL(this);">
+			</span>
+		</div>
+    </div>
+   <!-- <section>
+		<input type='file' id='imageupload' onchange="readURL(this);" class="noneimg" /><br/>
+		<span id="previewPane">
+			<img id="img_prev" src="#" alt="your image" />
+			<span id="x">[X]</span>
+		</span>
+	</section>-->
+</body>
+</html> 
